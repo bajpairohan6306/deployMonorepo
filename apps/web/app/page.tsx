@@ -8,6 +8,7 @@ export default async function Home() {
     <div >
       User: {user?.username}
       Password: {user?.password}
+      karma karo
     </div>
   );
 }
