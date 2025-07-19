@@ -12,11 +12,5 @@ jobs:
     steps:
       - run: |
           echo "${{secrets.SSH_PRIVATE_KEY}}" &> ~/ssh_key
-          ssh -i ~/ssh_key ubuntu@13.232.34.81 | echo "yes"
-          cd deployMonorepo && git pull
-          pnpm install
-          pnpm run build
-          pm2 restart http-server
-          pm2 restart web-prod
-          pm2 restart web-socket-server
+          ssh -i ~/ssh_key ubuntu@13.232.34.81 | echo "yes" -t "cd deployMonorepo && git pull origin main && pnpm install && pnpm run build && pm2 restart http-server && pm2 restart web-prod && pm2 restart web-socket-server"
       
