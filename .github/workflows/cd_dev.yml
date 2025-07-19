@@ -11,7 +11,8 @@ jobs:
 
     steps:
       - run: |
-          ssh -i ${{secrets.SSH_PRIVATE_KEY}} ubuntu@15.206.205.116
+          echo ${{secrets.SSH_PRIVATE_KEY}} > ~/ssh_key
+          ssh -i ./ssh_key ubuntu@15.206.205.116
           cd deployMonorepo && git pull
           pnpm install
           pnpm run build
