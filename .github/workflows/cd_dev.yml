@@ -10,8 +10,8 @@ jobs:
     name: Deploying everything on dev cluster
 
     steps:
-      name: SSH into server
-      run: |
+      -name: SSH into server
+      -run: |
         ssh -i ${{secrets.SSH_PRIVATE_KEY}} ubuntu@15.206.205.116
         cd deployMonorepo && git pull
         pnpm install
