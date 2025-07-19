@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploying everything on dev cluster
 
+    name: SSH into server
     steps:
-      name: SSH into server
       -run: |
         ssh -i ${{secrets.SSH_PRIVATE_KEY}} ubuntu@13.232.34.81
         cd deployMonorepo && git pull
