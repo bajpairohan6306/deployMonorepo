@@ -5,6 +5,7 @@ on:
        - "production"
 
 jobs:
+  uses: ubuntu-latest
   redeploy_everything:
     name: Deploying everything on dev cluster
 
