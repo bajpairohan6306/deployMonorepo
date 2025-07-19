@@ -12,10 +12,10 @@ jobs:
     steps:
       - run: |
           echo "${{secrets.SSH_PRIVATE_KEY}}" &> ~/ssh_key
-          # mkdir -p /home/runner/.ssh
-          # ls /home/runner/.ssh
-          # touch /home/runner/.ssh/known_hosts
-          # echo "${{ secrets.KNOWN_HOSTS }}" &> /home/runner/.ssh/known_hosts
+          mkdir -p /home/runner/.ssh
+          ls /home/runner/.ssh
+          touch /home/runner/.ssh/known_hosts
+          echo "${{ secrets.KNOWN_HOSTS }}" &> /home/runner/.ssh/known_hosts
           chmod 700 /home/runner/ssh_key
-          ssh -i ~/ssh_key ubuntu@15.206.205.116 | echo "yes" -t "cd deployMonorepo && git pull origin main && pnpm install && pnpm run build && pm2 restart http-server && pm2 restart web-prod && pm2 restart web-socket-server"
+          ssh -i ~/ssh_key ubuntu@15.206.205.116 -t "cd deployMonorepo && git pull origin main && pnpm install && pnpm run build && pm2 restart http-server && pm2 restart web-prod && pm2 restart web-socket-server"
     
