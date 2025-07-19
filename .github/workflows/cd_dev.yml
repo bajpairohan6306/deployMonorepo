@@ -10,12 +10,12 @@ jobs:
     name: Deploying everything on dev cluster
 
     steps:
-      -run: |
-        ssh -i ${{secrets.SSH_PRIVATE_KEY}} ubuntu@15.206.205.116
-        cd deployMonorepo && git pull
-        pnpm install
-        pnpm run build
-        pm2 restart http-server
-        pm2 restart web-prod
-        pm2 restart web-socket-server
+      - run: |
+          ssh -i ${{secrets.SSH_PRIVATE_KEY}} ubuntu@15.206.205.116
+          cd deployMonorepo && git pull
+          pnpm install
+          pnpm run build
+          pm2 restart http-server
+          pm2 restart web-prod
+          pm2 restart web-socket-server
     
